@@ -1,0 +1,68 @@
+[
+  {
+    "id": "eu",
+    "name": "EU Funding & Tenders",
+    "organisation": "European Commission",
+    "region": "Europe",
+    "categories": ["research", "business", "public"],
+    "label": "Research, business & public projects",
+    "description": "Explore European funding programmes and calls for proposals, including Horizon Europe.",
+    "url": "https://ec.europa.eu/info/funding-tenders/opportunities/portal/screen/home",
+    "checked": "2026-11-19"
+  },
+  {
+    "id": "ffg",
+    "name": "Austrian Research Promotion Agency",
+    "organisation": "FFG",
+    "region": "Austria",
+    "categories": ["research", "business"],
+    "label": "Applied research & innovation",
+    "description": "Find support for applied research, technology development and innovation projects in Austria.",
+    "url": "https://www.ffg.at/en/content/funding",
+    "checked": "2026-11-19"
+  },
+  {
+    "id": "aws",
+    "name": "Austria Wirtschaftsservice",
+    "organisation": "aws",
+    "region": "Austria",
+    "categories": ["business"],
+    "label": "Startups & business growth",
+    "description": "Discover financing and support for developing an idea, starting a business and growing a company.",
+    "url": "https://www.aws.at/en/",
+    "checked": "2026-11-19"
+  },
+  {
+    "id": "fwf",
+    "name": "Austrian Science Fund",
+    "organisation": "FWF",
+    "region": "Austria",
+    "categories": ["research"],
+    "label": "Basic research & academic careers",
+    "description": "Explore funding for basic research, scientific careers and international research collaborations.",
+    "url": "https://www.fwf.ac.at/en/funding",
+    "checked": "2026-11-19"
+  },
+  {
+    "id": "eic",
+    "name": "European Innovation Council",
+    "organisation": "EIC",
+    "region": "Europe",
+    "categories": ["research", "business"],
+    "label": "Deep tech & breakthrough innovation",
+    "description": "Explore European support for breakthrough technologies, innovative startups and scaling companies.",
+    "url": "https://eic.ec.europa.eu/index_en",
+    "checked": "2026-11-19"
+  },
+  {
+    "id": "interreg",
+    "name": "Interreg",
+    "organisation": "European territorial cooperation",
+    "region": "Europe",
+    "categories": ["public"],
+    "label": "Regional & cross-border cooperation",
+    "description": "Find European cooperation programmes for organisations and communities working across borders.",
+    "url": "https://interreg.eu/",
+    "checked": "2026-11-19"
+  }
+]

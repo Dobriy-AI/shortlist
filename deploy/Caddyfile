@@ -1,0 +1,31 @@
+{
+	admin unix//srv/workspace/users/1000/shortlist-runtime/state/admin.sock
+	email office@dobriy.ai
+	acme_ca https://acme-v02.api.letsencrypt.org/directory
+	default_bind 46.225.13.35
+	servers {
+		protocols h1 h2
+	}
+}
+
+fundings.wiki {
+	root * /srv/workspace/users/1000/shortlist-runtime/current
+	encode zstd gzip
+	header {
+		Content-Security-Policy "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; upgrade-insecure-requests"
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		Permissions-Policy "camera=(), microphone=(), geolocation=()"
+		Strict-Transport-Security "max-age=31536000"
+		Cache-Control no-cache
+		-Server
+	}
+	@fonts path /interface-style/fonts/*
+	header @fonts Cache-Control "public, max-age=86400"
+	respond /healthz "ok" 200
+	file_server
+}
+
+www.fundings.wiki {
+	redir https://fundings.wiki{uri} permanent
+}

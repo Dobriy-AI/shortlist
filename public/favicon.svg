@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512" role="img" aria-label="Dobriy AI icon">
+  <defs>
+    <linearGradient id="ai-gradient" x1="76.164558" y1="355.54449" x2="375.42029" y2="302.77765" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.86839346,0,0,1,16.72269,1.6370364)">
+      <stop offset="0" stop-color="#22bdff"/>
+      <stop offset="0.6" stop-color="#00a1ff"/>
+      <stop offset="1" stop-color="#0084ff"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(1.2703931,0,0,1.1316292,-39.371483,-118.43941)">
+    <path fill="url(#ai-gradient)" d="m 308.55739,217.09308 0.73163,227.40996 h 48.89272 V 217.09308 Z m -151.3276,0.68348 -76.370751,225.85143 h 55.419291 l 12.84084,-38.16055 h 71.63925 l 12.84084,38.94068 h 54.74243 L 212.6478,217.77656 Z m 27.74439,60.86703 22.32259,79.36393 h -46.50629 z"/>
+  </g>
+</svg>

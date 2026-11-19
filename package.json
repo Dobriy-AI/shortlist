@@ -1,0 +1,21 @@
+{
+  "name": "shortlist",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Shortlist, funding discovery at fundings.wiki",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/serve.mjs",
+    "check": "node --check public/main.js && node --check scripts/build.mjs && node --check scripts/serve.mjs && node scripts/build.mjs",
+    "test:browser": "node tests/browser.mjs"
+  },
+  "dependencies": {
+    "@dobriy/interface-style": "git+ssh://git@git.dobriy.ai/semantic/interface-style.git#v0.1.4"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.1",
+    "playwright": "1.62.1"
+  }
+}

@@ -1,0 +1,42 @@
+[Unit]
+Description=Shortlist landing page at fundings.wiki
+Wants=network-online.target
+After=network-online.target
+RequiresMountsFor=/srv/workspace/users/1000/shortlist-runtime
+ConditionPathIsMountPoint=/srv/workspace
+
+[Service]
+Type=notify
+User=vanya
+Group=vanya
+WorkingDirectory=/srv/workspace/users/1000/shortlist-runtime
+Environment=XDG_DATA_HOME=/srv/workspace/users/1000/shortlist-runtime/state/data
+Environment=XDG_CONFIG_HOME=/srv/workspace/users/1000/shortlist-runtime/state/config
+Environment=TMPDIR=/srv/workspace/users/1000/shortlist-runtime/state/tmp
+ExecStartPre=/usr/bin/test -r /srv/workspace/users/1000/shortlist-runtime/current/index.html
+ExecStart=/srv/workspace/users/1000/shortlist-runtime/bin/caddy run --config /srv/workspace/users/1000/shortlist-runtime/Caddyfile --adapter caddyfile
+ExecReload=/srv/workspace/users/1000/shortlist-runtime/bin/caddy reload --config /srv/workspace/users/1000/shortlist-runtime/Caddyfile --adapter caddyfile --address unix//srv/workspace/users/1000/shortlist-runtime/state/admin.sock
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=15
+AmbientCapabilities=CAP_NET_BIND_SERVICE
+CapabilityBoundingSet=CAP_NET_BIND_SERVICE
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/srv/workspace/users/1000/shortlist-runtime/state
+PrivateDevices=true
+PrivateTmp=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX AF_NETLINK
+UMask=0077
+MemoryMax=256M
+TasksMax=128
+LimitNOFILE=8192
+
+[Install]
+WantedBy=multi-user.target
