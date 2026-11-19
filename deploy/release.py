@@ -1,12 +1,13 @@
-"""Publish an already validated, committed static build on this server."""
+"""Send a local, checked build through the same restricted release receiver as CI."""
+import hashlib
+import io
 import json
 import os
 from pathlib import Path
-import shutil
 import subprocess
+import tarfile
 
 project = Path(__file__).resolve().parents[1]
-runtime = Path('/srv/workspace/users/1000/shortlist-runtime')
 
 def git(*args):
     return subprocess.check_output(['git', *args], cwd=project, text=True).strip()
@@ -20,12 +21,14 @@ if git('rev-parse', 'origin/main') != commit:
     raise SystemExit('Push this commit to origin/main before publishing.')
 if json.loads((project / 'dist/release.json').read_text())['commit'] != commit:
     raise SystemExit('Build again after committing.')
-release = runtime / 'releases' / commit
-release.parent.mkdir(parents=True, exist_ok=True)
-if release.exists():
-    raise SystemExit(f'Release already exists: {release}')
-shutil.copytree(project / 'dist', release)
-candidate = runtime / f'.current-{os.getpid()}'
-candidate.symlink_to(release, target_is_directory=True)
-candidate.replace(runtime / 'current')
-print(f'Published {commit} to {release}')
+stream = io.BytesIO()
+with tarfile.open(fileobj=stream, mode='w:gz') as bundle:
+    bundle.add(project / 'dist', arcname='.')
+archive = stream.getvalue()
+digest = hashlib.sha256(archive).hexdigest()
+subprocess.run(
+    ['/usr/bin/python3', '/usr/local/lib/shortlist/receive.py'],
+    input=archive,
+    env={**os.environ, 'SSH_ORIGINAL_COMMAND': f'deploy {commit} {digest}'},
+    check=True,
+)

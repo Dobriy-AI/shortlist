@@ -1,0 +1,4 @@
+# GitLab host key verified against the existing server trust record.
+git.dobriy.ai ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINhpdMSIn2vlNKrgeitjtA7dfRMS91jNiSYfzsKIDRse
+# Production host key read directly from /etc/ssh/ssh_host_ed25519_key.pub.
+46.225.13.35 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHqTLSoXj9pMUkyAmFEVPiGa/TdqYy9c2lnHdKKbO6GS

@@ -4,6 +4,8 @@ A web application to help people find and shortlist potential funding opportunit
 
 Public landing page: [fundings.wiki](https://fundings.wiki/).
 
+[![CI and deployment](https://github.com/Dobriy-AI/shortlist/actions/workflows/ci-cd.yml/badge.svg)](https://github.com/Dobriy-AI/shortlist/actions/workflows/ci-cd.yml)
+
 ## Current release
 
 The first release is a responsive landing page with a searchable directory of six official European and Austrian funding sources, an introduction to the planned application, FAQs and a contact link to the Dobriy AI team. Source links work without JavaScript. Personal shortlists, accounts, matching and application tracking are planned features.
@@ -39,6 +41,14 @@ Browser checks require Playwright Chromium. Install it once with `npx playwright
 - `deploy/` contains the server configuration and [deployment instructions](deploy/README.md).
 
 The site has no backend, signup form, tracking scripts or cookies. The contact action opens the user's email application. Funding applications happen on providers' websites.
+
+## CI/CD
+
+GitHub Actions checks pull requests and pushes to `main`. Repository branches get a locked dependency install, production build, responsive browser tests and accessibility checks. All pull requests also run source checks and deployment tests. Fork pull requests cannot access the private stylesheet credential, so their full build and browser checks require a maintainer-owned branch. Every merge receives the full checks before deployment.
+
+Passing `main` commits deploy automatically to [fundings.wiki](https://fundings.wiki/), using the exact tested artifact. The production environment only accepts `main`. Deployment verifies the checksum and commit, switches releases atomically and restores the previous version if the server's live verification fails or is interrupted. GitHub then checks the public HTTPS site from its runner.
+
+Screenshots are retained in Actions for seven days, deployable artifacts for fourteen. The workflow can also be run manually from the Actions tab on `main`. See [deployment operations](deploy/README.md) for credentials, rollback and receiver maintenance.
 
 ## Vision
 

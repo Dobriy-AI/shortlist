@@ -4,3 +4,7 @@ artifacts/
 *.log
 .env
 .env.*
+__pycache__/
+*.pyc
+site.tar.gz
+site.tar.gz.sha256
